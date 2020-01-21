@@ -1,0 +1,11 @@
+.filterTitle {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.filterInput {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}

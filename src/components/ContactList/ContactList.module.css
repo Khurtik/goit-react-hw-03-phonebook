@@ -1,0 +1,7 @@
+.contacts {
+  list-style-type: decimal;
+}
+
+.contactItem:not(:last-child) {
+  margin-bottom: 10px;
+}

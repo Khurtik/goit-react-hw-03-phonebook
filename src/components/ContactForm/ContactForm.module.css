@@ -1,0 +1,19 @@
+.contactForm {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputName,
+.inputNumber {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: normal;
+}
