@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import Notification from './Notification/Notification';
-import Alert from './Notification/Notification.module.css';
-import slideTransition from './transition/slide.module.css';
+import ContactForm from '../ContactForm/ContactForm';
+import ContactList from '../ContactList/ContactList';
+import Filter from '../Filter/Filter';
+import Notification from '../Notification/Notification';
+import Alert from '../Notification/Notification.module.css';
+import slideTransition from '../transition/slide.module.css';
 import styles from './App.module.css';
-import './styles.css';
+import '../styles.css';
 
 const filterContacts = (contacts, filter) => {
   return contacts.filter(contact =>
