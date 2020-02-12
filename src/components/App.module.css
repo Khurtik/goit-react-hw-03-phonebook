@@ -1,0 +1,11 @@
+.containerApp {
+  width: 400px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0;
+}
+.titleApp {
+  color: blue;
+}

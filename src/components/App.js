@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import shortid from 'shortid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import Notification from './Notification/Notification';
+import Alert from './Notification/Notification.module.css';
+import slideTransition from './transition/slide.module.css';
+import styles from './App.module.css';
+import './styles.css';
 
 const filterContacts = (contacts, filter) => {
   return contacts.filter(contact =>
@@ -14,6 +20,8 @@ export default class App extends Component {
   state = {
     contacts: [],
     filter: '',
+    text: '',
+    showingAlert: false,
   };
 
   componentDidMount() {
@@ -42,8 +50,7 @@ export default class App extends Component {
 
   addContact = name => {
     if (this.state.contacts.find(item => item.name === name.name)) {
-      // eslint-disable-next-line no-alert
-      alert(`${name.name} is already in contacts`);
+      this.setState({ text: 'Contact already exists!', showingAlert: true });
       return;
     }
 
@@ -58,18 +65,40 @@ export default class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts, filter, text, showingAlert } = this.state;
 
     const filteredContacts = filterContacts(contacts, filter);
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className={styles.containerApp}>
+        <CSSTransition
+          in={showingAlert}
+          timeout={250}
+          classNames={Alert}
+          onEntered={() =>
+            setTimeout(() => {
+              this.setState({
+                showingAlert: false,
+              });
+            }, 5000)
+          }
+          unmountOnExit
+        >
+          <Notification text={text} />
+        </CSSTransition>
+        <CSSTransition in timeout={500} classNames="title" appear>
+          <h1 className={styles.titleApp}>Phonebook</h1>
+        </CSSTransition>
         <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
-        {contacts.length >= 2 && (
+        <CSSTransition
+          in={contacts.length >= 2}
+          timeout={250}
+          unmountOnExit
+          classNames={slideTransition}
+        >
           <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
+        </CSSTransition>
         <ContactList
           contacts={filteredContacts}
           onDelete={this.deleteContact}

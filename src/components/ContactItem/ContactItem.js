@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './ContactItem.module.css';
 
 const ContactItem = ({ name, number, onDelete }) => (
   <>
-    <span>
-      {name}: {number}
-    </span>
-    <button type="button" onClick={onDelete}>
-      Delete
-    </button>
+    <div className={styles.itemBox}>
+      <span>
+        {name}: {number}
+      </span>
+      <button type="button" onClick={onDelete} className={styles.itemBtn}>
+        <span>&times;</span>
+      </button>
+    </div>
   </>
 );
 

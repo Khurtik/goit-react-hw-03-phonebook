@@ -1,0 +1,21 @@
+.itemBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 5px;
+  box-shadow: 2px 2px 2px 1px rgba(15, 4, 109, 0.2);
+}
+
+.itemBtn {
+  background-color: red;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.itemBtn :hover {
+  color: black;
+}
